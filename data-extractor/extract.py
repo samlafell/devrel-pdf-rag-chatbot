@@ -15,8 +15,8 @@ CRATEDB_URL = os.getenv("CRATEDB_URL")
 CRATEDB_USERNAME = os.getenv("CRATEDB_USERNAME")
 CRATEDB_PASSWORD = os.getenv("CRATEDB_PASSWORD")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-PDF_DIR = os.getenv("PDF_DIR", "./pdf_files")
-COLLECTION_NAME = "pdf_data"
+PDF_DIR = os.getenv("PDF_DIR")
+COLLECTION_NAME = os.getenv("PDF_COLLECTION_TABLE_NAME")
 
 # Instantiate OpenAI client
 client = OpenAI(api_key=OPENAI_API_KEY)
