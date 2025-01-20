@@ -13,7 +13,7 @@ CRATEDB_URL = os.getenv("CRATEDB_URL")
 CRATEDB_USERNAME = os.getenv("CRATEDB_USERNAME")
 CRATEDB_PASSWORD = os.getenv("CRATEDB_PASSWORD")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-COLLECTION_NAME = "pdf_data"
+COLLECTION_NAME = os.getenv("PDF_COLLECTION_TABLE_NAME")
 RESULTS_LIMIT = 3  # Number of results to return
 
 # Load spaCy model
