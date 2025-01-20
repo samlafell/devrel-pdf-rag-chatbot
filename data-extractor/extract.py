@@ -1,6 +1,6 @@
 import os
 import re
-import fitz  # PyMuPDF
+import fitz  # (from PyMuPDF)
 import requests
 from dotenv import load_dotenv
 from base64 import b64encode
