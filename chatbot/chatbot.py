@@ -274,7 +274,7 @@ def chatbot_query(question):
     # )
     return {
         "response": f"{GREEN}{answer}{RESET}",
-        "sources": "Sources:\n" + "\n".join(c["text"] for c in hybrid_results_with_scores),
+        "sources": "\n".join(c["text"] for c in hybrid_results_with_scores),
         "results": hybrid_results_with_scores
     }
 
@@ -298,7 +298,7 @@ def chatbot_interface():
             print("Goodbye!")
             break
         response = chatbot_query(user_query)
-        print(f"\nAnswer:\n{response['response']}\n\n{response['sources']}\n")
+        print(f"\nAnswer:\n{response['response']}\n\nSources:\n{response['sources']}\n")
 
 if __name__ == "__main__":
     chatbot_interface()        

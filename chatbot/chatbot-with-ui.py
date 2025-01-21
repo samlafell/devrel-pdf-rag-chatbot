@@ -61,17 +61,13 @@ if user_query:
     with st.spinner("Thinking..."):
         try:
             # Get chatbot response
-            raw_response = chatbot_query(user_query)
+            response = chatbot_query(user_query)
 
-            # Clean and parse response
-            cleaned_response = raw_response.replace("\033[92m", "").replace("\033[0m", "").strip()
-            
-            # Add a single blank line before sources
-            if "Sources:" in cleaned_response:
-                cleaned_response = cleaned_response.replace("Sources:", "<br><strong>Sources:</strong>")
+            # Clean and parse response, add header text for sources
+            formatted_response = f"{response['response'].replace("\033[92m", "").replace("\033[0m", "").strip()}<br><br><strong>Sources:</strong><br>{response['sources']}"
             
             # Append assistant response as a single message
-            st.session_state.messages.append({"role": "assistant", "content": cleaned_response})
+            st.session_state.messages.append({"role": "assistant", "content": formatted_response})
 
         except Exception as e:
             # Handle errors gracefully
@@ -95,6 +91,7 @@ for message in st.session_state.messages:
     elif message["role"] == "assistant":
         with st.container():
             # Render the assistant response with additional spacing
+            print(message)
             st.markdown(f"""
                 <div class="chat-message bot-message">
                     <div><strong>Assistant:</strong><br>{message["content"].replace("\n", "<br>")}</div>
