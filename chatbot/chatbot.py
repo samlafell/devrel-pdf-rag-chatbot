@@ -218,7 +218,7 @@ def chatbot_query(question):
     - question (str): The user's input question.
 
     Returns:
-    - str: A formatted response containing the answer and references to sources.
+    - dict: A dictionary containing different components of the response.  
 
     Debugging:
     - Prints intermediate steps (e.g., search results, context) when DEBUG is enabled.
@@ -248,10 +248,15 @@ def chatbot_query(question):
 
         if content not in unique_context:  # Avoid duplicates
             unique_context.add(content)
-            hybrid_results_with_scores.append(context_snippet)
+            hybrid_results_with_scores.append({
+                "text": context_snippet,
+                "page": page_num,
+                "type": content_type,
+                "score": score
+            })
 
     # Combine context for LLM
-    context = "\n".join(hybrid_results_with_scores)
+    context = "\n".join(c["text"] for c in hybrid_results_with_scores)
     if DEBUG:
         print(f"\n### Retrieved Context with Scores ###\n{context}\n")
 
@@ -262,11 +267,16 @@ def chatbot_query(question):
     answer = generate_answer(question, context)
 
     # Format the response with the answer and sources separated by a blank line
-    formatted_response = (
-        f"{GREEN}{answer}{RESET}\n\n"  # Add a blank line after the answer
-        "Sources:\n" + "\n".join(hybrid_results_with_scores)
-    )
-    return formatted_response
+
+    # formatted_response = (
+    #     f"{GREEN}{answer}{RESET}\n\n"  # Add a blank line after the answer
+    #     "Sources:\n" + "\n".join(c["text"] for c in hybrid_results_with_scores)
+    # )
+    return {
+        "response": f"{GREEN}{answer}{RESET}",
+        "sources": "Sources:\n" + "\n".join(c["text"] for c in hybrid_results_with_scores),
+        "results": hybrid_results_with_scores
+    }
 
 
 def chatbot_interface():
@@ -283,12 +293,12 @@ def chatbot_interface():
     """
     print("\nWelcome to the PDF Data Chatbot!")
     while True:
-        user_query = input("Ask a question (type 'exit' to quit): ").strip()
+        user_query = input("Ask a question ('exit' quits): ").strip()
         if user_query.lower() == "exit":
             print("Goodbye!")
             break
         response = chatbot_query(user_query)
-        print(f"\nAnswer:\n{response}\n")
+        print(f"\nAnswer:\n{response['response']}\n\n{response['sources']}\n")
 
 if __name__ == "__main__":
     chatbot_interface()        
