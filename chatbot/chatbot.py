@@ -264,9 +264,6 @@ def chatbot_query(question):
     # Generate the answer using the LLM
     answer = generate_answer(question, context)
 
-    # Generate the answer using the LLM
-    answer = generate_answer(question, context)
-
     # Format the response with the answer and sources separated by a blank line
 
     # formatted_response = (
