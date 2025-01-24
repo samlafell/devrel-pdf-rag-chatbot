@@ -223,9 +223,17 @@ def chatbot_query(question):
     Debugging:
     - Prints intermediate steps (e.g., search results, context) when DEBUG is enabled.
     """
+
+    if not question or len(question) == 0:
+        return {
+            "response": "Please ask a question."
+        }
+    
     results = perform_hybrid_search(question)
     if not results:
-        return "No relevant documents found."
+        return {
+            "response": "No relevant documents found.",
+        }
 
     print(f"DEBUG: Results structure: {results}") if DEBUG else None
 
@@ -296,7 +304,7 @@ def chatbot_interface():
             print("Goodbye!")
             break
         response = chatbot_query(user_query)
-        print(f"\nAnswer:\n{response['response']}\n\nSources:\n{response['sources']}\n")
+        print(f"\nAnswer:\n{response['response']}\n\nSources:\n{response['sources'] if 'sources' in response else "None."}\n")
 
 if __name__ == "__main__":
     chatbot_interface()        
