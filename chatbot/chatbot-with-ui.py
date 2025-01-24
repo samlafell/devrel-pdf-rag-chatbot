@@ -66,9 +66,7 @@ if user_query:
             # Clean and parse response, add header text for sources.
             sources = []
             for source in response["results"]:
-                # Format for one source response:
-                # Score: 0.3417, Document: How-to-Build-AI-driven-Knowledge-Assistants.pdf, Page: 10, Type: image.
-                sources.append(f"<li>Score: {source['score']}, Document: {source['doc']}, Page: {source['page']}, Type: {source['type']}</li>")
+                sources.append(f"""<li><a href="app/static/{source["doc"]}#page={source["page"]}" target="_blank">{source["doc"]}</a> (page {source["page"]}, {source["type"]}, score: {source["score"]})</li>""")
 
             formatted_response = f"{response['response'].replace("\033[92m", "").replace("\033[0m", "").strip()}<br><br><strong>Sources:</strong><br><ul>{''.join(sources)}</ul>"
             
