@@ -63,8 +63,14 @@ if user_query:
             # Get chatbot response
             response = chatbot_query(user_query)
 
-            # Clean and parse response, add header text for sources
-            formatted_response = f"{response['response'].replace("\033[92m", "").replace("\033[0m", "").strip()}<br><br><strong>Sources:</strong><br>{response['sources']}"
+            # Clean and parse response, add header text for sources.
+            sources = []
+            for source in response["results"]:
+                # Format for one source response:
+                # Score: 0.3417, Document: How-to-Build-AI-driven-Knowledge-Assistants.pdf, Page: 10, Type: image.
+                sources.append(f"<li>Score: {source['score']}, Document: {source['doc']}, Page: {source['page']}, Type: {source['type']}</li>")
+
+            formatted_response = f"{response['response'].replace("\033[92m", "").replace("\033[0m", "").strip()}<br><br><strong>Sources:</strong><br><ul>{''.join(sources)}</ul>"
             
             # Append assistant response as a single message
             st.session_state.messages.append({"role": "assistant", "content": formatted_response})
@@ -91,7 +97,6 @@ for message in st.session_state.messages:
     elif message["role"] == "assistant":
         with st.container():
             # Render the assistant response with additional spacing
-            print(message)
             st.markdown(f"""
                 <div class="chat-message bot-message">
                     <div><strong>Assistant:</strong><br>{message["content"].replace("\n", "<br>")}</div>
