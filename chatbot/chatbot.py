@@ -14,7 +14,7 @@ CRATEDB_USERNAME = os.getenv("CRATEDB_USERNAME")
 CRATEDB_PASSWORD = os.getenv("CRATEDB_PASSWORD")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 COLLECTION_NAME = os.getenv("PDF_COLLECTION_TABLE_NAME")
-RESULTS_LIMIT = os.getenv("RESULTS_LIMIT")
+RESULTS_LIMIT = int(os.getenv("RESULTS_LIMIT"))
 
 # Load spaCy model
 nlp = spacy.load("en_core_web_sm")
