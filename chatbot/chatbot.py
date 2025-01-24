@@ -250,6 +250,7 @@ def chatbot_query(question):
             unique_context.add(content)
             hybrid_results_with_scores.append({
                 "text": context_snippet,
+                "doc": doc_name,
                 "page": page_num,
                 "type": content_type,
                 "score": score
