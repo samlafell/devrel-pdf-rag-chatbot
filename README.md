@@ -2,14 +2,18 @@
 
 ## Introduction
 
-TODO
+This is a demo application that uses CrateDB as a data store for an AI powered chatbot.  
+
+Source data / knowledge is extracted from text and images inside PDF documents, converted to vector embeddings, then stored in CrateDB.  It's also stored as plain text with a full-text index.
+
+Users ask questions of this knowledge base using a natural language chat bot interface.  The code performs a hybrid search (K nearest neighbor and full-text keyword) over the data, using the results as context for an LLM to generate a natural language response.
 
 For a detailed explanation of how this project works, check out our blog series on the topic:
 
-* [Part One: Building AI Knowledge Assistants for Enterprise PDFs: A Strategic Approach](https://cratedb.com/blog/building-ai-knowledge-assistants-for-enterprise-pdfs).
-* [Part Two: Core Techniques Powering Enterprise Knowledge Assistants](https://cratedb.com/blog/core-techniques-in-an-enterprise-knowledge-assistants).
-* [Part Three: Designing the Consumption Layer for Enterprise Knowledge Assistants](https://cratedb.com/blog/designing-the-consumption-layer-for-enterprise-knowledge-assistants).
-* [Part Four: Step by Step Guide to Building a PDF Knowledge Assistant](https://cratedb.com/blog/step-by-step-guide-to-building-a-pdf-knowledge-assistant).
+* **Part One:** [Building AI Knowledge Assistants for Enterprise PDFs: A Strategic Approach](https://cratedb.com/blog/building-ai-knowledge-assistants-for-enterprise-pdfs).
+* **Part Two:** [Core Techniques Powering Enterprise Knowledge Assistants](https://cratedb.com/blog/core-techniques-in-an-enterprise-knowledge-assistants).
+* **Part Three:** [Designing the Consumption Layer for Enterprise Knowledge Assistants](https://cratedb.com/blog/designing-the-consumption-layer-for-enterprise-knowledge-assistants).
+* **Part Four:** [Step by Step Guide to Building a PDF Knowledge Assistant](https://cratedb.com/blog/step-by-step-guide-to-building-a-pdf-knowledge-assistant).
 
 If you prefer to see the details as a single document, [here'a a markdown version in GitHub](https://github.com/crate/cratedb-examples/tree/main/topic/chatbot).
 
@@ -77,8 +81,8 @@ Note that if you have something else running on port 4200 (CrateDB admin UI) or 
 
 This project is organized into two components, each contained in their own folder with their own `README` document.  You'll find further instructions for each component in its folder.
 
-* The data extractor component can be found in the [data-extractor](./data-extractor/) folder. TODO responsibilities...
-* The chat bot component is contained in the [`chatbot`](./chatbot/) folder.  This component receives plain text queries from users, performs a hybrid vector and full-text search over data that the data extractor stored in CrateDB, and presents the results as a chatbot response.
+* The **data extractor** component can be found in the [data-extractor](./data-extractor/) folder. This component is responsible for reading PDF files, extracting and chunking the text data and generating text descriptions of images.  The data is then stored in CrateDB for full-text and vector similarity searches.
+* The **chat bot** component is contained in the [`chatbot`](./chatbot/) folder.  This component receives plain text queries from users, performs a hybrid vector and full-text search over data that the data extractor stored in CrateDB, and presents the results as a chatbot response.
 
 ## CrateDB Academy
 
