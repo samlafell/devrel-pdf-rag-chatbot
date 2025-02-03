@@ -4,6 +4,8 @@
 
 This is a demo application that uses CrateDB as a data store for an AI powered chatbot.  
 
+![Demo showing the chat bot front end](chatbot_demo.gif)
+
 Source data / knowledge is extracted from text and images inside PDF documents, converted to vector embeddings, then stored in CrateDB.  It's also stored as plain text with a full-text index.
 
 Users ask questions of this knowledge base using a natural language chat bot interface.  The code performs a hybrid search (K nearest neighbor and full-text keyword) over the data, using the results as context for an LLM to generate a natural language response.
