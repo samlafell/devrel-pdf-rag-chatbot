@@ -15,9 +15,12 @@ CRATEDB_PASSWORD = os.getenv("CRATEDB_PASSWORD")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 COLLECTION_NAME = os.getenv("PDF_COLLECTION_TABLE_NAME")
 RESULTS_LIMIT = int(os.getenv("RESULTS_LIMIT"))
+GPT_MODEL = os.getenv("GPT_MODEL")
+TEXT_EMBEDDING_MODEL = os.getenv("TEXT_EMBEDDING_MODEL")
+SPACY_MODEL = os.getenv("SPACY_MODEL")
 
 # Load spaCy model
-nlp = spacy.load("en_core_web_sm")
+nlp = spacy.load(SPACY_MODEL)
 
 # Instantiate OpenAI client
 client = OpenAI(api_key=OPENAI_API_KEY)
@@ -54,12 +57,12 @@ def extract_keywords_pos(question):
     return " ".join(keywords)
 
 
-def get_text_embedding(text, model="text-embedding-ada-002"):
+def get_text_embedding(text):
     """
     Generates a vector embedding for a given text using OpenAI's embedding model.
     """
     try:
-        response = client.embeddings.create(input=[text], model=model)
+        response = client.embeddings.create(input=[text], model=TEXT_EMBEDDING_MODEL)
         return response.data[0].embedding
     except Exception as e:
         print(f"Error generating embedding: {e}") if DEBUG else None
@@ -201,7 +204,7 @@ def generate_answer(question, context):
     """
     try:
         response = client.chat.completions.create(
-            model="gpt-3.5-turbo",
+            model=GPT_MODEL,
             messages=[{"role": "user", "content": prompt}],
             max_tokens=500,
             temperature=0.3,
