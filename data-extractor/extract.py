@@ -17,6 +17,10 @@ CRATEDB_PASSWORD = os.getenv("CRATEDB_PASSWORD")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 PDF_DIR = os.getenv("PDF_DIR")
 COLLECTION_NAME = os.getenv("PDF_COLLECTION_TABLE_NAME")
+GPT_MODEL = os.getenv("GPT_MODEL")
+TEXT_EMBEDDING_MODEL = os.getenv("TEXT_EMBEDDING_MODEL")
+MAX_IMAGE_DESCRIPTION_TOKENS = int(os.getenv("MAX_IMAGE_DESCRIPTION_TOKENS"))
+IMAGE_DESCRIPTION_TEMPERATURE = float(os.getenv("IMAGE_DESCRIPTION_TEMPERATURE"))
 
 # Instantiate OpenAI client
 client = OpenAI(api_key=OPENAI_API_KEY)
@@ -198,13 +202,12 @@ def extract_surrounding_text(page_text, position=0, max_length=300):
 def encode_image(image_bytes):
     return base64.b64encode(image_bytes).decode("utf-8")
 
-def get_text_embedding_openai(text, model="text-embedding-3-small"):
+def get_text_embedding_openai(text):
     """
     Generates a vector embedding for the given text using OpenAI's embedding model.
 
     Parameters:
     - text (str): The text content to embed.
-    - model (str): OpenAI embedding model (default: "text-embedding-3-small").
 
     Returns:
     - list: A list of floats representing the embedding vector.
@@ -215,7 +218,7 @@ def get_text_embedding_openai(text, model="text-embedding-3-small"):
     """
     try:
         text = text.replace("\n", " ")  # Clean up newlines
-        response = client.embeddings.create(input=[text], model=model)
+        response = client.embeddings.create(input=[text], model=TEXT_EMBEDDING_MODEL)
         return response.data[0].embedding
     except Exception as e:
         print(f"Error generating embedding for text: {text[:50]}... Error: {e}")
@@ -237,13 +240,12 @@ def generate_text_embedding(text, document_name, page_num, idx):
         store_in_cratedb(content_id, document_name, page_num, "text", text, embedding)
         print(f"Stored text embedding: {content_id}")
 
-def generate_image_description(image_bytes, max_tokens=150):
+def generate_image_description(image_bytes):
     """
     Generates a detailed description of an image using OpenAI's GPT-4 Turbo.
 
     Parameters:
     - image_bytes (bytes): The binary data of the image.
-    - max_tokens (int): Maximum tokens for the generated description.
 
     Returns:
     - str: A detailed description of the image.
@@ -258,9 +260,9 @@ def generate_image_description(image_bytes, max_tokens=150):
         # Encode the image to base64
         encoded_image = b64encode(image_bytes).decode("utf-8")
 
-        # Call GPT-4-Turbo with vision capabilities
+        # Call the GPT model - needs to be a model with vision capabilities.
         response = client.chat.completions.create(
-            model="gpt-4-turbo",
+            model=GPT_MODEL,
             messages=[
                 {
                     "role": "system",
@@ -279,8 +281,8 @@ def generate_image_description(image_bytes, max_tokens=150):
                     ],
                 },
             ],
-            max_tokens=max_tokens,
-            temperature=0.5,
+            max_tokens=MAX_IMAGE_DESCRIPTION_TOKENS,
+            temperature=IMAGE_DESCRIPTION_TEMPERATURE,
         )
 
         # Extract and return the description
