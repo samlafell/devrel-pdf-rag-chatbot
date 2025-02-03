@@ -21,7 +21,13 @@ Now install the dependencies that this project requires:
 pip install -r requirements.txt
 ```
 
-## TODO
+## Preparing the PDF Files
+
+TODO
+
+## Running the Data Extractor
+
+TODO
 
 ```bash
 python extract.py
