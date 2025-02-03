@@ -18,6 +18,8 @@ RESULTS_LIMIT = int(os.getenv("RESULTS_LIMIT"))
 GPT_MODEL = os.getenv("GPT_MODEL")
 TEXT_EMBEDDING_MODEL = os.getenv("TEXT_EMBEDDING_MODEL")
 SPACY_MODEL = os.getenv("SPACY_MODEL")
+CHAT_RESPONSE_TEMPERATURE = float(os.getenv("CHAT_RESPONSE_TEMPERATURE"))
+CHAT_RESPONSE_MAX_TOKENS = int(os.getenv("CHAT_RESPONSE_MAX_TOKENS"))
 
 # Load spaCy model
 nlp = spacy.load(SPACY_MODEL)
@@ -206,8 +208,8 @@ def generate_answer(question, context):
         response = client.chat.completions.create(
             model=GPT_MODEL,
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=500,
-            temperature=0.3,
+            max_tokens=CHAT_RESPONSE_MAX_TOKENS,
+            temperature=CHAT_RESPONSE_TEMPERATURE,
         )
         return response.choices[0].message.content.strip()
     except Exception as e:
