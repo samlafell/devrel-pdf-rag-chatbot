@@ -8,7 +8,14 @@ TODO links to blogs...
 
 ## Prerequisites
 
-TODO
+To run this project you'll need to install the following software:
+
+* (Python version) Python 3 ([download](https://www.python.org/downloads/)) - we've tested this project with Python 3.12 on macOS Sequoia.
+* Git command line tools ([download](https://git-scm.com/downloads)).
+* Your favorite code editor, to edit configuration files and browse/edit the code if you wish.  [Visual Studio Code](https://code.visualstudio.com/) is great for this.
+* Access to a cloud or local CrateDB cluster (see below for details).
+
+You'll also need an OpenAI API key with sufficient credits to run the code.  Obtain an API key and see pricing here: [OpenAI API Pricing](https://openai.com/api/pricing/).
 
 ## Getting the Code
 
@@ -61,7 +68,10 @@ Note that if you have something else running on port 4200 (CrateDB admin UI) or 
 
 ## Configuring and Running Each Component
 
-TODO
+This project is organized into two components, each contained in their own folder with their own `README` document.  You'll find further instructions for each component in its folder.
+
+* The data extractor component can be found in the [data-extractor](./data-extractor/) folder. TODO responsibilities...
+* The chat bot component is contained in the [`chatbot`](./chatbot/) folder.  This component receives plain text queries from users, performs a hybrid vector and full-text search over data that the data extractor stored in CrateDB, and presents the results as a chatbot response.
 
 ## CrateDB Academy
 
