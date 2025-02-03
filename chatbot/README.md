@@ -27,12 +27,28 @@ TODO extra step...
  python -m spacy download en_core_web_sm
  ```
 
-## TODO 
+## Running the Chat Bot
+
+The chat bot has two interfaces.  One has a basic terminal prompt, the other is a web application using the [Streamlit framework](https://streamlit.io/).
+
+### Terminal Interface
+
+Start the chat bot's terminal interface with the following command:
 
  ```bash
  python chatbot.py
  ```
 
+The interface will appear in the terminal window.
+
+If you're prefer to run the web interface, use this command:
+
  ```bash
 streamlit run chatbot-with-ui.py
 ```
+
+Your browser should open a new tab with the chat bot interface in it.  If it doesn't, point your browser at `http://localhost:8501/` to see it.
+
+## Interacting with the Chat Bot
+
+TODO
