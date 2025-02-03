@@ -2,6 +2,8 @@
 
 TODO
 
+The resulting dataset can then be queried using natural language through the [Chat Bot interface](../chatbot/) provided.
+
 ## First Steps
 
 First, you'll need to get a local copy of the code, set up a CrateDB database and get an OpenAI API key.  Follow the instructions in the [main README](../README.md), returning here when you're ready.

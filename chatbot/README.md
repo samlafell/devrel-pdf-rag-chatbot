@@ -1,6 +1,8 @@
 # CrateDB RAG Chat Bot
 
-TODO
+This is the Chat Bot component, responsible for receiving a natural language query from the user then performing a hybrid KNN and keyword search in CrateDB to identify relevant information from a set of PDF files that were previously ingested using the [Data Extractor](../data-extractor/).
+
+Results are presented back to the user in natural language by sending them to an LLM.
 
 ## First Steps
 
