@@ -14,6 +14,7 @@ load_dotenv()
 CRATEDB_URL = os.getenv("CRATEDB_URL")
 CRATEDB_USERNAME = os.getenv("CRATEDB_USERNAME")
 CRATEDB_PASSWORD = os.getenv("CRATEDB_PASSWORD")
+CRATEDB_FULL_TEXT_ANALYZER = os.getenv("CRATEDB_FULL_TEXT_ANALYZER")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 PDF_DIR = os.getenv("PDF_DIR")
 COLLECTION_NAME = os.getenv("PDF_COLLECTION_TABLE_NAME")
@@ -44,7 +45,7 @@ def create_table():
         document_name TEXT,
         page_number INT,
         content_type TEXT,
-        content TEXT INDEX USING FULLTEXT WITH (analyzer = 'standard'),
+        content TEXT INDEX USING FULLTEXT WITH (analyzer = '{CRATEDB_FULL_TEXT_ANALYZER}'),
         content_embedding FLOAT_VECTOR(1536)
     )
     """
