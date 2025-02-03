@@ -21,7 +21,7 @@ Now install the dependencies that this project requires:
 ```bash
 pip install -r requirements.txt
 ```
-TODO extra step...
+The chat bot uses [Spacy](https://spacy.io/) to perform natural language processing on queries from the user.  You'll need to download Spacy's [English pipeline model](https://spacy.io/models/en#en_core_web_sm) before continuing:
 
 ```bash
  python -m spacy download en_core_web_sm
