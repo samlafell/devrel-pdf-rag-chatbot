@@ -21,11 +21,12 @@ Now install the dependencies that this project requires:
 ```bash
 pip install -r requirements.txt
 ```
+
 The chat bot uses [Spacy](https://spacy.io/) to perform natural language processing on queries from the user.  You'll need to download Spacy's [English pipeline model](https://spacy.io/models/en#en_core_web_sm) before continuing:
 
 ```bash
- python -m spacy download en_core_web_sm
- ```
+python -m spacy download en_core_web_sm
+```
 
 ## Running the Chat Bot
 
@@ -35,15 +36,15 @@ The chat bot has two interfaces.  One has a basic terminal prompt, the other is 
 
 Start the chat bot's terminal interface with the following command:
 
- ```bash
- python chatbot.py
- ```
+```bash
+python chatbot.py
+```
 
 The interface will appear in the terminal window.
 
 If you're prefer to run the web interface, use this command:
 
- ```bash
+```bash
 streamlit run chatbot-with-ui.py
 ```
 
@@ -51,4 +52,10 @@ Your browser should open a new tab with the chat bot interface in it.  If it doe
 
 ## Interacting with the Chat Bot
 
-TODO
+Once you've started the chat bot, ask it a question using natual language.  For example you might ask:
+
+"How can I store JSON data in CrateDB and query it with a chatbot?"
+
+The chat bot will generate its answer by performing hybrid search queries against the chunked PDF text and image data stored in CrateDB and feeding the responses as context to an LLM.
+
+If you're using the Streamlit web interface, each link to a source document is clickable and should open the document for you on the page referenced.
