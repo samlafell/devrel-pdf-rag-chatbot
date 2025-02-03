@@ -4,7 +4,14 @@
 
 TODO
 
-TODO links to blogs...
+For a detailed explanation of how this project works, check out our blog series on the topic:
+
+* [Part One: Building AI Knowledge Assistants for Enterprise PDFs: A Strategic Approach](https://cratedb.com/blog/building-ai-knowledge-assistants-for-enterprise-pdfs).
+* [Part Two: Core Techniques Powering Enterprise Knowledge Assistants](https://cratedb.com/blog/core-techniques-in-an-enterprise-knowledge-assistants).
+* [Part Three: Designing the Consumption Layer for Enterprise Knowledge Assistants](https://cratedb.com/blog/designing-the-consumption-layer-for-enterprise-knowledge-assistants).
+* [Part Four: Step by Step Guide to Building a PDF Knowledge Assistant](https://cratedb.com/blog/step-by-step-guide-to-building-a-pdf-knowledge-assistant).
+
+If you prefer to see the details as a single document, [here'a a markdown version in GitHub](https://github.com/crate/cratedb-examples/tree/main/topic/chatbot).
 
 ## Prerequisites
 
