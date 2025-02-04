@@ -196,7 +196,10 @@ def generate_answer(question, context):
     - Includes sources in the prompt to provide traceability in the answer.
     """
     prompt = f"""
-    You are a skilled technical assistant. Use the following document context to answer the question concisely and clearly. Focus on the most relevant information. Avoid redundancy, but provide a full explanation. Include references to figures or images if mentioned:
+    You are a skilled technical assistant. Use the following document context 
+    to answer the question concisely and clearly. Focus on the most relevant 
+    information. Avoid redundancy, but provide a full explanation. Include 
+    references to figures or images if mentioned:
 
     Context:
     {context}
@@ -277,12 +280,6 @@ def chatbot_query(question):
     # Generate the answer using the LLM
     answer = generate_answer(question, context)
 
-    # Format the response with the answer and sources separated by a blank line
-
-    # formatted_response = (
-    #     f"{GREEN}{answer}{RESET}\n\n"  # Add a blank line after the answer
-    #     "Sources:\n" + "\n".join(c["text"] for c in hybrid_results_with_scores)
-    # )
     return {
         "response": f"{GREEN}{answer}{RESET}",
         "sources": "\n".join(c["text"] for c in hybrid_results_with_scores),
