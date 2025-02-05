@@ -23,10 +23,11 @@ If you prefer to see the details as a single document, [here'a a markdown versio
 
 To run this project you'll need to install the following software:
 
-* (Python version) Python 3 ([download](https://www.python.org/downloads/)) - we've tested this project with Python 3.12 on macOS Sequoia.
+* Python 3 ([download](https://www.python.org/downloads/)) - we've tested this project with Python 3.12 on macOS Sequoia.
 * Git command line tools ([download](https://git-scm.com/downloads)).
 * Your favorite code editor, to edit configuration files and browse/edit the code if you wish.  [Visual Studio Code](https://code.visualstudio.com/) is great for this.
 * Access to a cloud or local CrateDB cluster (see below for details).
+* Some PDF files that you want to use as the source data for the chat bot.
 
 You'll also need an OpenAI API key with sufficient credits to run the code.  Obtain an API key and see pricing here: [OpenAI API Pricing](https://openai.com/api/pricing/).
 
@@ -78,6 +79,11 @@ http://localhost:4200
 
 Note that if you have something else running on port 4200 (CrateDB admin UI) or port 5432 (Postgres protocol port) you'll need to stop those other services first, or edit the Docker compose file to expose these ports at different numbers on your local machine.
 
+## Preparing the PDF Files
+
+The chat bot uses data extracted from PDF files.  This can include text and images.  Place one or more PDF files in the `chatbot/static` folder before running either component.  The data extractor component will read these, extract data from them and store it in CrateDB.  The chat bot component's web interface uses the PDFs as static assets, so that links to the original document can be presented as part of the chat bot's response.
+
+We've included a couple of CrateDB White Papers in PDF format to get you started.  You'll find them in the `chatbot/static` folder.
 
 ## Configuring and Running Each Component
 
