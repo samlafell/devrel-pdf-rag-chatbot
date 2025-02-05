@@ -1,8 +1,8 @@
 # PDF Data Extractor Component
 
-TODO
+This is the data extractor component.  It reads PDF files from a source folder, extracts chunks of data from them and creates vector embeddings.  These are then stored in CrateDB.
 
-The resulting dataset can then be queried using natural language through the [Chat Bot interface](../chatbot/) provided.
+The resulting dataset can be queried using natural language through the [Chat Bot interface](../chatbot/) provided.
 
 ## First Steps
 
