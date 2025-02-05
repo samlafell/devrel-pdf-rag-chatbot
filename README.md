@@ -27,7 +27,7 @@ To run this project you'll need to install the following software:
 * Git command line tools ([download](https://git-scm.com/downloads)).
 * Your favorite code editor, to edit configuration files and browse/edit the code if you wish.  [Visual Studio Code](https://code.visualstudio.com/) is great for this.
 * Access to a cloud or local CrateDB cluster (see below for details).
-* Some PDF files that you want to use as the source data for the chat bot.
+* Some PDF files that you want to use as the source data for the chat bot (we've included a couple of our own white papers to get you started).
 
 You'll also need an OpenAI API key with sufficient credits to run the code.  Obtain an API key and see pricing here: [OpenAI API Pricing](https://openai.com/api/pricing/).
 
