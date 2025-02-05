@@ -1,6 +1,6 @@
-# CrateDB RAG Chat Bot
+# CrateDB RAG Chatbot
 
-This is the Chat Bot component, responsible for receiving a natural language query from the user then performing a hybrid KNN and keyword search in CrateDB to identify relevant information from a set of PDF files that were previously ingested using the [Data Extractor](../data-extractor/).
+This is the Chatbot component, responsible for receiving a natural language query from the user then performing a hybrid KNN and keyword search in CrateDB to identify relevant information from a set of PDF files that were previously ingested using the [Data Extractor](../data-extractor/).
 
 Results are presented back to the user in natural language by sending them to an LLM.
 
@@ -24,7 +24,7 @@ Now install the dependencies that this project requires:
 pip install -r requirements.txt
 ```
 
-The chat bot uses [Spacy](https://spacy.io/) to perform natural language processing on queries from the user.  You'll need to download Spacy's [English pipeline model](https://spacy.io/models/en#en_core_web_sm) before continuing:
+The chatbot uses [Spacy](https://spacy.io/) to perform natural language processing on queries from the user.  You'll need to download Spacy's [English pipeline model](https://spacy.io/models/en#en_core_web_sm) before continuing:
 
 ```bash
 python -m spacy download en_core_web_sm
@@ -32,7 +32,7 @@ python -m spacy download en_core_web_sm
 
 ## Configure your Environment File
 
-The chat bot has several configuration parameters.  These are all defined in a `.env` file and should be considered secrets, don't commit them to source control!
+The chatbot has several configuration parameters.  These are all defined in a `.env` file and should be considered secrets, don't commit them to source control!
 
 To get you started, we've provided a template file `env.example`.  Create a `.env` file by running the following command:
 
@@ -49,15 +49,15 @@ Then edit `.env` and make the following changes:
 * Set the value of `CRATEDB_PASSWORD` to your database password if you are using a cloud database, or leave it blank if you are using Docker.
 * Set the value of `OPENAI_API_KEY` to your OpenAI API key.
 
-**Save your changes before attempting to run the chat bot.**
+**Save your changes before attempting to run the chatbot.**
 
-## Running the Chat Bot
+## Running the Chatbot
 
-The chat bot has two interfaces.  One has a basic terminal prompt, the other is a web application using the [Streamlit framework](https://streamlit.io/).
+The chatbot has two interfaces.  One has a basic terminal prompt, the other is a web application using the [Streamlit framework](https://streamlit.io/).
 
 ### Terminal Interface
 
-Start the chat bot's terminal interface with the following command:
+Start the chatbot's terminal interface with the following command:
 
 ```bash
 python chatbot.py
@@ -71,14 +71,14 @@ If you'd prefer to run the web interface, use this command:
 streamlit run chatbot-with-ui.py
 ```
 
-Your browser should open a new tab with the chat bot interface in it.  If it doesn't, point your browser at `http://localhost:8501/` to see it.
+Your browser should open a new tab with the chatbot interface in it.  If it doesn't, point your browser at `http://localhost:8501/` to see it.
 
-## Interacting with the Chat Bot
+## Interacting with the Chatbot
 
-Once you've started the chat bot, ask it a question using natual language.  For example you might ask:
+Once you've started the chatbot, ask it a question using natual language.  For example you might ask:
 
 "How does CrateDB fit into the AI ecosystem, specifically in the area of knowledge assistants?"
 
-The chat bot will generate its answer by performing hybrid search queries against the chunked PDF text and image data stored in CrateDB and feeding the responses as context to an LLM.
+The chatbot will generate its answer by performing hybrid search queries against the chunked PDF text and image data stored in CrateDB and feeding the responses as context to an LLM.
 
 If you're using the Streamlit web interface, each link to a source document is clickable and should open the document for you on the page referenced.

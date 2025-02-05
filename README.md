@@ -1,14 +1,14 @@
-# CrateDB RAG / Hybrid Search PDF Chat Bot
+# CrateDB RAG / Hybrid Search PDF Chatbot
 
 ## Introduction
 
 This is a demo application that uses CrateDB as a data store for an AI powered chatbot.  
 
-![Demo showing the chat bot front end](chatbot_demo.gif)
+![Demo showing the chatbot front end](chatbot_demo.gif)
 
 Source data / knowledge is extracted from text and images inside PDF documents, converted to vector embeddings, then stored in CrateDB.  It's also stored as plain text with a full-text index.
 
-Users ask questions of this knowledge base using a natural language chat bot interface.  The code performs a hybrid search (K nearest neighbor and full-text keyword) over the data, using the results as context for an LLM to generate a natural language response.
+Users ask questions of this knowledge base using a natural language chatbot interface.  The code performs a hybrid search (K nearest neighbor and full-text keyword) over the data, using the results as context for an LLM to generate a natural language response.
 
 For a detailed explanation of how this project works, check out our blog series on the topic:
 
@@ -27,7 +27,7 @@ To run this project you'll need to install the following software:
 * Git command line tools ([download](https://git-scm.com/downloads)).
 * Your favorite code editor, to edit configuration files and browse/edit the code if you wish.  [Visual Studio Code](https://code.visualstudio.com/) is great for this.
 * Access to a cloud or local CrateDB cluster (see below for details).
-* Some PDF files that you want to use as the source data for the chat bot (we've included a couple of our own white papers to get you started).
+* Some PDF files that you want to use as the source data for the chatbot (we've included a couple of our own white papers to get you started).
 
 You'll also need an OpenAI API key with sufficient credits to run the code.  Obtain an API key and see pricing here: [OpenAI API Pricing](https://openai.com/api/pricing/).
 
@@ -81,7 +81,7 @@ Note that if you have something else running on port 4200 (CrateDB admin UI) or 
 
 ## Preparing the PDF Files
 
-The chat bot uses data extracted from PDF files.  This can include text and images.  Place one or more PDF files in the `chatbot/static` folder before running either component.  The data extractor component will read these, extract data from them and store it in CrateDB.  The chat bot component's web interface uses the PDFs as static assets, so that links to the original document can be presented as part of the chat bot's response.
+The chatbot uses data extracted from PDF files.  This can include text and images.  Place one or more PDF files in the `chatbot/static` folder before running either component.  The data extractor component will read these, extract data from them and store it in CrateDB.  The chatbot component's web interface uses the PDFs as static assets, so that links to the original document can be presented as part of the chatbot's response.
 
 We've included a couple of CrateDB White Papers in PDF format to get you started.  You'll find them in the `chatbot/static` folder.
 
@@ -89,8 +89,8 @@ We've included a couple of CrateDB White Papers in PDF format to get you started
 
 This project is organized into two components, each contained in their own folder with their own `README` document.  You'll find further instructions for each component in its folder.
 
-* The **data extractor** component can be found in the [data-extractor](./data-extractor/) folder. This component is responsible for reading PDF files, extracting and chunking the text data and generating text descriptions of images.  The data is then stored in CrateDB for full-text and vector similarity searches.  You need to run this component once, before you use the chat bot.
-* The **chat bot** component is contained in the [`chatbot`](./chatbot/) folder.  This component receives plain text queries from users, performs a hybrid vector and full-text search over data that the data extractor stored in CrateDB, and presents the results as a chatbot response.
+* The **data extractor** component can be found in the [data-extractor](./data-extractor/) folder. This component is responsible for reading PDF files, extracting and chunking the text data and generating text descriptions of images.  The data is then stored in CrateDB for full-text and vector similarity searches.  You need to run this component once, before you use the chatbot.
+* The **chatbot** component is contained in the [`chatbot`](./chatbot/) folder.  This component receives plain text queries from users, performs a hybrid vector and full-text search over data that the data extractor stored in CrateDB, and presents the results as a chatbot response.
 
 ## CrateDB Academy
 
