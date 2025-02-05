@@ -30,10 +30,6 @@ The chat bot uses [Spacy](https://spacy.io/) to perform natural language process
 python -m spacy download en_core_web_sm
 ```
 
-## Preparing the PDF Files
-
-TODO
-
 ## Running the Chat Bot
 
 The chat bot has two interfaces.  One has a basic terminal prompt, the other is a web application using the [Streamlit framework](https://streamlit.io/).
