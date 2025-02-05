@@ -89,7 +89,7 @@ We've included a couple of CrateDB White Papers in PDF format to get you started
 
 This project is organized into two components, each contained in their own folder with their own `README` document.  You'll find further instructions for each component in its folder.
 
-* The **data extractor** component can be found in the [data-extractor](./data-extractor/) folder. This component is responsible for reading PDF files, extracting and chunking the text data and generating text descriptions of images.  The data is then stored in CrateDB for full-text and vector similarity searches.
+* The **data extractor** component can be found in the [data-extractor](./data-extractor/) folder. This component is responsible for reading PDF files, extracting and chunking the text data and generating text descriptions of images.  The data is then stored in CrateDB for full-text and vector similarity searches.  You need to run this component once, before you use the chat bot.
 * The **chat bot** component is contained in the [`chatbot`](./chatbot/) folder.  This component receives plain text queries from users, performs a hybrid vector and full-text search over data that the data extractor stored in CrateDB, and presents the results as a chatbot response.
 
 ## CrateDB Academy

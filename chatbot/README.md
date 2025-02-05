@@ -65,7 +65,7 @@ python chatbot.py
 
 The interface will appear in the terminal window.
 
-If you're prefer to run the web interface, use this command:
+If you'd prefer to run the web interface, use this command:
 
 ```bash
 streamlit run chatbot-with-ui.py
@@ -77,7 +77,7 @@ Your browser should open a new tab with the chat bot interface in it.  If it doe
 
 Once you've started the chat bot, ask it a question using natual language.  For example you might ask:
 
-"How can I store JSON data in CrateDB and query it with a chatbot?"
+"How does CrateDB fit into the AI ecosystem, specifically in the area of knowledge assistants?"
 
 The chat bot will generate its answer by performing hybrid search queries against the chunked PDF text and image data stored in CrateDB and feeding the responses as context to an LLM.
 

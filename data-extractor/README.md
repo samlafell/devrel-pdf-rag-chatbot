@@ -50,8 +50,29 @@ We've supplied a couple of example PDF files.  If you'd like to replace them wit
 
 ## Running the Data Extractor
 
-TODO
+Each time the data extractor is run it will:
+
+* Create a new table in CrateDB to store the extracted data in if one does not already exist.  By default this table is called `pdf_data` but its name can be changed in the `.env` file.
+* Read each PDF file in the `../chatbot/static` folder and extract the data from it, storing it in CrateDB.  The source folder name is configurable and can be changed in the `.env` file.
+
+Start the data extractor with the following command:
 
 ```bash
 python extract.py
+```
+
+This may take some time to run, and will output progress information as it goes.  Example:
+
+```
+% python extract.py
+Table pdf_data is ready.
+Processing ../chatbot/static/CrateDB-Architecture-Guide.pdf
+Stored content: text_CrateDB-Architecture-Guide.pdf_1_0
+Stored text embedding: text_CrateDB-Architecture-Guide.pdf_1_0
+Stored content: text_CrateDB-Architecture-Guide.pdf_2_1
+Stored text embedding: text_CrateDB-Architecture-Guide.pdf_2_1
+...
+Stored image embedding: image_CrateDB-Architecture-Guide.pdf_3_0
+Stored content: image_CrateDB-Architecture-Guide.pdf_3_1
+...
 ```
