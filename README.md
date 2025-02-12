@@ -8,6 +8,8 @@ This is a demo application that uses CrateDB as a data store for an AI powered c
 
 ---
 
+**Original code by [Wierd van der Haar](https://github.com/wierdvanderhaar), Senior Solution Engineer at CrateDB.**
+
 [Watch a video walkthrough of this project on YouTube](https://www.youtube.com/watch?v=7UqDAct0EWQ).
 
 ---
