@@ -7,12 +7,8 @@ This is a demo application that uses CrateDB as a data store for an AI powered c
 ![Demo showing the chatbot front end](chatbot_demo.gif)
 
 ---
-We'll demonstrate this project on a live stream at 5pm Central European Time, Wednesday 12th February 2025.  
 
-Sign up to be notified when we're live:
-
-* [LinkedIn](https://www.linkedin.com/events/chatwithyourpdffilesusingaiandc7292474669486469120/theater/)
-* [YouTube](https://www.youtube.com/watch?v=7UqDAct0EWQ)
+[Watch a video walkthrough of this project on YouTube](https://www.youtube.com/watch?v=7UqDAct0EWQ).
 
 ---
 
@@ -46,7 +42,7 @@ You'll also need an OpenAI API key with sufficient credits to run the code.  Obt
 Next you'll need to get a copy of the code from GitHub by cloning the repository.  Open up your terminal and change directory to wherever you store coding projects, then enter the following commands:
 
 ```bash
-git clone https://github.com/crate/devrel-offshore-wind-farms-demo.git
+git clone https://github.com/crate/devrel-pdf-rag-chatbot.git
 cd devrel-pdf-rag-chatbot
 ```
 
