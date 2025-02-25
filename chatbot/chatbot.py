@@ -241,6 +241,7 @@ def chatbot_query(question):
     if not results:
         return {
             "response": "No relevant documents found.",
+            "results": []
         }
 
     print(f"DEBUG: Results structure: {results}") if DEBUG else None
